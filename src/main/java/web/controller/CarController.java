@@ -21,14 +21,7 @@ public class CarController {
 
     @GetMapping("/cars")
     public String printCars (@RequestParam(defaultValue = "5", value = "count") int cars, ModelMap model) {
-    List<Car> list = new ArrayList<>(Arrays.asList(
-            new Car ("Lada","Red",2019),
-            new Car ("Chevrolet","Green",2020),
-            new Car ("Mercedes","Yellow",2021),
-            new Car ("Audi","Grey",2018),
-            new Car ("BMW","Black",2022)));
-    list = service.getList(list,cars);
-    model.addAttribute("list",list);
+    model.addAttribute("car",service.getList(cars));
     return "car";
  }
 
